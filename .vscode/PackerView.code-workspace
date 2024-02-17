@@ -1,0 +1,95 @@
+{
+	"folders": [// Visible workspaces
+		{
+			"path": "..",
+			"name": "Package Template"
+		}
+	],
+	"settings": {// Code Editor
+		"window.title": "Template Package - ${appName}",
+		"editor.lineNumbers": "on",
+
+		"debug.saveBeforeStart": "nonUntitledEditorsInActiveGroup",
+		"files.autoSave": "afterDelay",
+		"files.autoSaveDelay": 1000, // 1k milliseconds == 1 second
+
+
+		"files.exclude": {// remove from explorer view (does not remove physical path)
+			"**/__pycache__": true,
+			".github":true,
+			"LICENSE":true,
+			"README.*":true,
+			"SECURITY.*":true,
+		},
+
+
+		"files.associations": {
+			"*.plug_in":"python",
+			"*.loader":"yaml",
+			"*.plug_in.settings":"yaml",
+		},
+
+
+		"files.insertFinalNewline": true,
+		"files.trimFinalNewlines": true,
+		"files.trimTrailingWhitespace": true,
+
+		"editor.autoClosingBrackets": "languageDefined",
+		"editor.autoClosingQuotes": "languageDefined",
+
+		"editor.autoSurround": "languageDefined",
+		"editor.bracketPairColorization.enabled": true,
+		"editor.bracketPairColorization.independentColorPoolPerBracketType": false,
+		"editor.colorDecorators": true,
+
+		"editor.cursorBlinking": "phase",
+		"editor.cursorStyle": "line",
+		"editor.cursorWidth": 3,
+
+		"editor.autoIndent": "full",
+		"editor.detectIndentation": true,
+		"editor.indentSize": "tabSize",
+		"editor.tabSize": 4,
+
+		"editor.minimap.enabled": true,
+		"editor.minimap.autohide": true,
+		"editor.minimap.renderCharacters": false,
+
+		"editor.acceptSuggestionOnEnter": "off",
+		"editor.tabCompletion": "on",
+
+		"editor.stickyScroll.enabled": true,
+
+		"editor.fontFamily": "'open-dyslexic','Droid Sans Mono', 'monospace', monospace",
+		"editor.fontLigatures": true,
+
+		"debug.terminal.clearBeforeReusing": true,
+	},
+	"launch": {// Debug Launch configurations
+		"version": "Developer.Sandbox.pkg.0.0.0.0.0.00000001",
+		"configurations": [
+			{// Production - Hybrid
+				"name": "Emulate Production Callstack - Hybrid",// name the debugger can reference
+				"consoleTitle": "Python Application (Hybrid)",// sets title of the console window
+				"autoReload": {"enable": true},// updates the runtime as changes to the script are applied
+				"justMyCode": true,// only debug code written by the package maintainer
+
+				"cwd": "${workspaceFolder}",// sets the current working directory
+				"request": "launch",// anchor for other services to attach to
+				"type": "python",// execution type
+				"pythonArgs": [// Passes to the interpreter
+					//"-O", // omits assertions
+					"-OO" // omits assertions and docstr
+				],
+				"module": "pkg",// name of the module to call (includes -m arg for PythonArgs)
+
+				"args": [// Passes to the Python module called
+					"--MODE=Hybrid",// mode the application boots as
+					"--USRDIR=*ROOT DIR*/usr",// defines a path the user directory may be found
+					"--LOG_OUTPUT=*USR DIR*/logs",// location to direct the log files to output
+					"--LOG-LEVEL=*DEFAULT*"// minimum logging level required to have an output
+				]
+			}
+		]
+	}
+}
