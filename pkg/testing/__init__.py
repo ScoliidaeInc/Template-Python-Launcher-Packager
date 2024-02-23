@@ -69,7 +69,10 @@ class Tests:
         "Finished testing on: [ api.logger ]",
         "",
         "Starting testing on: [ api.plugins ]",
-        f"{api.plugins.var= }",
+        f"{api.plugins.path= }",
+        f"{api.plugins.boot_loader= }",
+        f"{api.plugins.entry_file= }",
+        f"{api.plugins.boot_order= }",
         "Finished testing on: [ api.plugins ]",
         sep="\n"
     )

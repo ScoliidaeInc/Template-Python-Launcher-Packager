@@ -54,7 +54,11 @@ Available Calls:
     - join_logs "Assumes path as a sub-directory of the logs directory"
     - join_plugins "Assumes path as a sub-directory of the plug-ins directory"
     - seperator "Operating System path seperator"
-
+- plugins "Controls the loading of all the plug-ins listed by the boot.loader"
+    - path "Current expected directory to find launcher plug-ins"
+    - boot_loader "Current expected directory to find launcher "boot.loader""
+    - entry_file "Name of expected file to initiate the plug-in"
+    - boot_order "Reads the plug-in directory and "boot.loader" to confirm load order"
 """
 
 from . import (# api branches that've already been namespace mangled

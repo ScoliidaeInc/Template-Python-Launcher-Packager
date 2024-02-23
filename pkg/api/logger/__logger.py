@@ -205,7 +205,10 @@ class Logger:
 
         Only assigns a value upon first writes to the provided directory
         """
-        return self.__current_session_log_file
+        return self.__current_session_log_file.replace(
+            path.seperator+path.seperator,
+            path.seperator
+            )
     @current_file.setter
     def current_file(self, new_path)-> NoneType:
         self.__current_session_log_file= path.validate(

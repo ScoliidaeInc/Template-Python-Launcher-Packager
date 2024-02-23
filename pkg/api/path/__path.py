@@ -222,7 +222,8 @@ def _validate_path_credentials(potential_path:str,
             " when choosing between create_path_as_file and create_path_as_dir"
         raise ValueError(input_error)
     else:
-        sterile_path:str|None=_normalize_path_string(potential_path)
+        sterile_path:str|None=_normalize_path_string(potential_path)\
+            .replace(_os_path_sep+_os_path_sep,_os_path_sep)
         if sterile_path is None:# Result failed
             raise ValueError("Failed to normalize path, please ensure inputs are correct.")
         del potential_path
@@ -393,7 +394,7 @@ class Path:
         pkg_dir:str=root_dir+_os_path_sep+_Info.name
         usr_dir:str=_Info.kwargs.get("--USRDIR",f"*ROOT DIR*{_os_path_sep}user")
         log_dir:str=_Info.kwargs.get("--LOG_OUTPUT",f"*USR DIR*{_os_path_sep}logs")
-        plugin_dir:str=f"*USR DIR*{_os_path_sep}plug-ins"
+        plugin_dir:str=f"*USR DIR*{_os_path_sep}plug_ins"
     @staticmethod
     def normalize(potential_path:str)-> str|None:
         """
@@ -460,7 +461,7 @@ class Path:
             create_path_as_dir)
 
     @classmethod
-    def join_root(cls, path_to_add:str)-> str:
+    def join_root(cls, path_to_add:str="")-> str:
         """
         Returns a path as a subdirectory of the root directory of the application
 
@@ -468,7 +469,7 @@ class Path:
         """
         return _lock_path(path_to_add,"root")
     @staticmethod
-    def join_pkg(path_to_add:str)-> str:
+    def join_pkg(path_to_add:str="")-> str:
         """
         Returns a path as a subdirectory of the application
 
@@ -476,7 +477,7 @@ class Path:
         """
         return _lock_path(path_to_add,"pkg")
     @staticmethod
-    def join_user(path_to_add:str)-> str:
+    def join_user(path_to_add:str="")-> str:
         """
         Returns a path as a subdirectory of the user directory of the application
 
@@ -484,7 +485,7 @@ class Path:
         """
         return _lock_path(path_to_add,"usr")
     @staticmethod
-    def join_logs(path_to_add:str)-> str:
+    def join_logs(path_to_add:str="")-> str:
         """
         Returns a path as a subdirectory of the logs directory of the application
 
@@ -492,7 +493,7 @@ class Path:
         """
         return _lock_path(path_to_add,"logs")
     @staticmethod
-    def join_plugins(path_to_add:str)-> str:
+    def join_plugins(path_to_add:str="")-> str:
         """
         Returns a path as a subdirectory of the plug-in directory of the application
 
