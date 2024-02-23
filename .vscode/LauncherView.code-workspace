@@ -71,13 +71,12 @@
 		"configurations": [
 			{// Production - Hybrid
 				"name": "Emulate Production Callstack - Hybrid",// name the debugger can reference
-				"consoleTitle": "Python Application (Hybrid)",// sets title of the console window
 				"autoReload": {"enable": true},// updates the runtime as changes to the script are applied
 				"justMyCode": true,// only debug code written by the package maintainer
 
 				"cwd": "${workspaceFolder}",// sets the current working directory
 				"request": "launch",// anchor for other services to attach to
-				"type": "python",// execution type
+				"type": "debugpy",// execution type
 				"pythonArgs": [// Passes to the interpreter
 					//"-O", // omits assertions
 					"-OO" // omits assertions and docstr
