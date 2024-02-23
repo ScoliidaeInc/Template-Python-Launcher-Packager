@@ -74,8 +74,6 @@
 			"ms-toolsai.jupyter-renderers",
 			"ms-toolsai.vscode-jupyter-slideshow",
 			"davidanson.vscode-markdownlint",
-			"ms-python.vscode-pylance",
-			"ms-python.pylint",
 			"ms-python.debugpy",
 			"bmalehorn.shell-syntax",
 			"foxundermoon.shell-format"
