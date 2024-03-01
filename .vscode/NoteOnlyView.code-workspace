@@ -1,0 +1,70 @@
+{
+	"folders": [// Visible workspaces
+		{
+			"path": "../.vscode",
+			"name": "Workspace Launchers"
+		},
+		{
+			"path": "../.vscode/notes",
+			"name": "Notes"
+		}
+	],
+	"settings": {// Code Editor
+		"window.title": "Template Package - ${appName}",
+		"editor.lineNumbers": "on",
+
+		"debug.saveBeforeStart": "nonUntitledEditorsInActiveGroup",
+		"files.autoSave": "afterDelay",
+		"files.autoSaveDelay": 1000, // 1k milliseconds == 1 second
+
+
+		"files.exclude": {// remove from explorer view (does not remove physical path)
+			"**/__pycache__": true,
+			"notes":true
+		},
+
+
+		"files.associations": {
+			"*.plug_in":"python",
+			"*.loader":"yaml",
+			"*.plug_in.settings":"yaml",
+			"*.notes":"markdown"
+		},
+
+
+		"files.insertFinalNewline": true,
+		"files.trimFinalNewlines": true,
+		"files.trimTrailingWhitespace": true,
+
+		"editor.autoClosingBrackets": "languageDefined",
+		"editor.autoClosingQuotes": "languageDefined",
+
+		"editor.autoSurround": "languageDefined",
+		"editor.bracketPairColorization.enabled": true,
+		"editor.bracketPairColorization.independentColorPoolPerBracketType": false,
+		"editor.colorDecorators": true,
+
+		"editor.cursorBlinking": "phase",
+		"editor.cursorStyle": "line",
+		"editor.cursorWidth": 3,
+
+		"editor.autoIndent": "full",
+		"editor.detectIndentation": true,
+		"editor.indentSize": "tabSize",
+		"editor.tabSize": 4,
+
+		"editor.minimap.enabled": true,
+		"editor.minimap.autohide": true,
+		"editor.minimap.renderCharacters": false,
+
+		"editor.acceptSuggestionOnEnter": "off",
+		"editor.tabCompletion": "on",
+
+		"editor.stickyScroll.enabled": true,
+
+		"editor.fontFamily": "'open-dyslexic','Droid Sans Mono', 'monospace', monospace",
+		"editor.fontLigatures": true,
+
+		"debug.terminal.clearBeforeReusing": true,
+	}
+}

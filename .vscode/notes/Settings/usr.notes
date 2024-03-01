@@ -1,0 +1,29 @@
+
+[Usr_Dir]
+// render Usr_Dir=True removed from user input, only commented here for representation of use
+
+
+
+
+movable=true
+
+
+
+
+
+path="/test/path"
+
+
+
+[Logs]
+output Logs= "*USR DIR*/logs", // changed to default from "/test/logs"
+
+
+
+
+handler Logs= file
+
+
+
+
+level logs= info

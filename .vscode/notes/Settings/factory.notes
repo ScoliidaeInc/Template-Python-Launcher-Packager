@@ -1,0 +1,84 @@
+// must contain ALL expected settings & default values for minimal required settings for the launcher
+[Usr_Dir]
+render Usr_Dir= true
+^input_type render Usr_Dir= bool
+^restrict_usr render Usr_Dir=true
+^render render Usr_Dir= false
+
+movable Usr_Dir= True
+^input_type movable Usr_Dir= bool
+^restrict_usr movable Usr_Dir= true
+^render movable Usr_Dir= false
+
+path Usr_Dir= *ROOT DIR*/usr
+^input_type path Usr_Dir= str
+^restrict_usr path Usr_Dir= true
+^render path Usr_Dir= false
+
+[Logs]
+render Logs= true
+^input_type render Logs= bool
+^restrict_usr render Logs= true
+^render render Logs= false
+
+output Logs= *USR DIR*/logs
+^input_type output Logs= str
+^restrict_usr output Logs= true
+^render output Logs= True
+
+handler Logs= file
+^input_type handler Logs= str
+^restrict_usr handler Logs=true
+^render handler Logs= true
+
+level Logs= info
+^input_type level Logs= str
+^restrict_usr level Logs= false
+^render level Logs= true
+
+[Screen]
+render Screen= true
+^input_type render Screen= bool
+^restrict_usr render Screen= true
+^render render Screen= false
+
+ratio Screen= *AUTO*
+^input_type ratio Screen= str | dict{int:int}
+^restrict_usr ratio Screen= true
+^render ratio Screen= True
+
+width Screen= *AUTO*
+^input_type width Screen= str | int
+^restrict_usr width Screen= true
+^render width Screen= True
+
+height Screen= *AUTO*
+^input_type height Screen= str | int
+^restrict_usr height Screen= true
+^render height Screen= True
+
+[Application]
+render Application= true
+^input_type render Application= bool
+^restrict_usr render Application= true
+^render render Application= false
+
+width Application= 50
+^input_type width Application= range(10,100,0.01)
+^restrict_usr width Application= true
+^render width Application= True
+
+height Application= 50
+^input_type width Application= range(10,100,0.01)
+^restrict_usr width Application= true
+^render width Application= True
+
+resizable Application= true
+^input_type resizable Application= bool
+^restrict_usr resizable Application= false
+^render resizable Application= true
+
+movable Application= true
+^input_type movable Application= bool
+^restrict_usr movable Application= true
+^render movable Application= false
