@@ -16,4 +16,4 @@ Available Calls:
 """
 
 from .__application import Info
-from .settings.__init__ import Finalized as _settings
+from .settings.__init__ import Finalized as settings

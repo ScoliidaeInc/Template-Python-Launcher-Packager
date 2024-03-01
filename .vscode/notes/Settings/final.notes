@@ -1,0 +1,63 @@
+{ // Final view of settings represented by the three inputs
+	// dictates how each setting should be handled, stored, viewed by each level
+	"Usr_Dir":{ // category of settings
+		"render":{ // Sets if the category is visible to the user
+			"factory":true, // default setting shipped with launcher
+			"plug_in":true, // overrides factory to current setting if not invalid else default to factory
+			"input_type":bool, // acceptable input range/pattern for given setting
+			"restrict_usr":true, // for rendering setting to user and/if usr input is accepted
+			"render":false, // hides render setting for category from user
+			"usr":None, //input if unrestricted input and provided else None
+		},
+		"movable":{ // findable directory is allowed 1 redirect
+			"factory":true, // default setting shipped with launcher
+			"plug_in":None, // overrides factory to current setting if not invalid else default to factory
+			"input_type":bool, // acceptable input range/pattern for given setting
+			"restrict_usr":false, // renders setting to user
+			"render":true, // hides setting from user
+			"usr":true, // input if unrestricted input
+		},
+		"path":{ // expected path to find the user directory at
+			"factory":"*ROOT DIR*/usr", // default setting shipped with launcher
+			"plug_in":None, // overrides factory to current setting if not invalid else default to factory
+			"input_type":str, // acceptable input range/pattern for given setting
+			"restrict_usr":false, // renders setting to user
+			"render":true, // hides setting from user
+			"usr":"/test/path", // input if unrestricted input
+		}
+	},
+	"Logs":{// stores information about the logging settings
+		"render":{ // Sets if the category is visible to the user
+			"factory":false, // default setting shipped with launcher
+			"plug_in":None, // overrides factory to current setting if not invalid else default to factory
+			"input_type":bool, // acceptable input range/pattern for given setting
+			"restrict_usr":true, // for rendering setting to user and/if usr input is accepted
+			"render":false, // hides render setting for category from user
+			"usr":None, //input if unrestricted input and provided else None
+		},
+		"output":{ // path to find the stored logging files at
+			"factory":"*USR DIR*/logs", // default setting shipped with launcher
+			"plug_in":None, // overrides factory to current setting if not invalid else default to factory
+			"input_type":str, // acceptable input range/pattern for given setting
+			"restrict_usr":false, // renders setting to user
+			"render":true, // hides setting from user
+			"usr":"*USR DIR*/logs", // input if unrestricted input
+		},
+		"handler":{ // dictates how the logger chooses to output
+			"factory":"file", // default setting shipped with launcher
+			"plug_in":None, // overrides factory to current setting if not invalid else default to factory
+			"input_type":str, // acceptable input range/pattern for given setting
+			"restrict_usr":true, // renders setting to user
+			"render":true, // hides setting from user
+			"usr":"file", // input if unrestricted input
+		},
+		"level":{ // dictates the minimum or higher allowed reported level to be logged
+			"factory":"file", // default setting shipped with launcher
+			"plug_in":None, // overrides factory to current setting if not invalid else default to factory
+			"input_type":str, // acceptable input range/pattern for given setting
+			"restrict_usr":true, // renders setting to user
+			"render":true, // hides setting from user
+			"usr":"file", // input if unrestricted input
+		},
+	}
+}
