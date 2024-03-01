@@ -1,0 +1,21 @@
+// to add plug-in specific settings, please add them as a new category with appropriate settings required to work
+[Usr_Dir]
+render Usr_Dir= true
+^input_type render Usr_Dir= bool
+
+^render render Usr_Dir=false
+
+
+^input_type movable Usr_Dir=bool
+^restrict_usr movable Usr_Dir=false
+^render movable Usr_Dir=True
+
+
+
+^restrict_usr path Usr_Dir=False
+^render path Usr_Dir=true
+
+// [Logs] is implied by syntax of targetted setting here
+
+
+^restrict_usr output Logs=false
