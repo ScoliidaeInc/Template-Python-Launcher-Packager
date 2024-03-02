@@ -64,16 +64,16 @@ Available Calls:
     - boot_order "Reads the plug-in directory and "boot.loader" to confirm load order"
 """
 
+#region mangle api namespace to bury exposed nodes not intended for use
+from .path import Path as path# Handles anything involving paths
+from .logger import Logger as logger# Application event logger
+
 # CAUTION WHEN USING PLUG-INS
 # these are designed to be capable of using this package to create an application
 # this being said, anything can be executed from the plug-ins once imported
 # only add trusted plug-ins to the boot.loader file
-
-
-#region mangle api namespace to bury exposed nodes not intended for use
-from .path import Path as path# Handles anything involving paths
-from .logger import Logger as logger# Application event logger
 from .plugins import Plugins as plugins
+
 from . import (
     calendar,# Handles all dates, times, and events
     application,# Provides immutable information about the system as used by the package
