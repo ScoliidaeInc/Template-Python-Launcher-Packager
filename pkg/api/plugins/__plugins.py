@@ -2,10 +2,11 @@
 
 from types import NoneType
 from os import walk as view_current_directory
-from importlib import import_module
-from pkg.api import path
+from os.path import exists as _exists
+#from importlib import import_module
+from pkg.api import path as api_path
 
-_plug_in_path:str=path.join_plugins()
+_plug_in_path:str=api_path.join_plugins()
 def _determine_boot_order(loader_path:str,entry_file:str,settings_extension:str)-> dict|NoneType:
     """
     Reads the boot.loader file for boot order and type
@@ -25,7 +26,7 @@ def _determine_boot_order(loader_path:str,entry_file:str,settings_extension:str)
         if expected_plugin_order is passed,
         the enumerated values will be what populates the document in the represented order
         """
-        bootloader_path:str=path.normalize(_plug_in_path+"boot.loader")
+        bootloader_path:str=api_path.normalize(_plug_in_path+"boot.loader")
         try:# File does NOT exist, create it
             with open(bootloader_path,"x",encoding="utf-8"):
                 return
@@ -36,8 +37,8 @@ def _determine_boot_order(loader_path:str,entry_file:str,settings_extension:str)
         except OSError as exc:# Unexpected error occured
             raise OSError("An unexpected system error has occured") from exc
 
-    loader_path:str=path.validate(# ensure provided path is valid
-        path.normalize(f"{loader_path}")# sterilize path input
+    loader_path:str=api_path.validate(# ensure provided path is valid
+        api_path.normalize(f"{loader_path}")# sterilize path input
         )["path"]
     plugin_entry_file:str= entry_file.strip().lower()
     plugin_settings_ext:str= f".{settings_extension.strip().lower()}"
@@ -45,17 +46,16 @@ def _determine_boot_order(loader_path:str,entry_file:str,settings_extension:str)
     asynchronous_mode_enabled:bool=False
     bootloader_contents:list|NoneType=[]
     # select path and break it at the last seperator
-    expected_bootloader_path,bootloader_file= loader_path.rsplit(path.seperator,1)
+    expected_bootloader_path,bootloader_file= loader_path.rsplit(api_path.seperator,1)
     tree_view:list=list(view_current_directory(expected_bootloader_path))
 
     if not bootloader_file in tree_view[0][-1]:# Ensure boot.loader exists
         _create_bootloader()
-        bootloader_already_read=True
     # Verify all potential plugins and settings have been detected before reading file
     for potential_plugin in tree_view[1:]:
         plugin_path,subdirs,subfiles=potential_plugin
         del subdirs# subdirs is unused, was only created for unpacking the sibling variables
-        current_plugin_root,current_plugin= plugin_path.rsplit(path.seperator,1)
+        current_plugin_root,current_plugin= plugin_path.rsplit(api_path.seperator,1)
         if current_plugin_root!=expected_bootloader_path:
             continue
         elif not current_plugin in tree_view[0][1]:# skip current plug-in if not in expected list
@@ -152,7 +152,9 @@ class Plugins:
     - boot_order "Reads the plug-in directory and "boot.loader" to confirm load order"
     """
     path:str=_plug_in_path
-    boot_loader:str=path+"boot.loader"
+    path_exists:str= lambda path=path: _exists(api_path.normalize(path))
+    boot_loader:str=_plug_in_path+"boot.loader"
+    boot_loader_exists:str= lambda boot_loader=boot_loader: _exists(api_path.normalize(boot_loader))
     entry_file:str="load.plug_in"
     settings_extension:str="plug_in.settings"
-    boot_order:dict|NoneType=_determine_boot_order(boot_loader,entry_file,settings_extension)
+    #boot_order:dict|NoneType=_determine_boot_order(boot_loader,entry_file,settings_extension)

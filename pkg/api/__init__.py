@@ -54,7 +54,6 @@ Available Calls:
     - join_logs "Assumes path as a sub-directory of the logs directory"
     - join_plugins "Assumes path as a sub-directory of the plug-ins directory"
     - seperator "Operating System path seperator"
-- plugins == WIP == "Broken until user directory search is fixed"
 - plugins "Controls the loading of all the plug-ins listed by the boot.loader"
     - path "Current expected directory to find launcher plug-ins"
     - boot_loader "Current expected directory to find launcher "boot.loader""
@@ -67,12 +66,11 @@ Available Calls:
 # this being said, anything can be executed from the plug-ins once imported
 # only add trusted plug-ins to the boot.loader file
 
-#fix soon as user directory search is corrected
-#####  WIP  ######## from .plugins import Plugins as plugins
 
 #region mangle api namespace to bury exposed nodes not intended for use
 from .path import Path as path# Handles anything involving paths
 from .logger import Logger as logger# Application event logger
+from .plugins import Plugins as plugins
 from . import (
     calendar,# Handles all dates, times, and events
     application,# Provides immutable information about the system as used by the package
