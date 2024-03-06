@@ -1,6 +1,10 @@
 {
 	"folders": [// Visible workspaces
 		{
+			"path": "../wiki/Template-Python-Launcher-Packager.wiki",
+			"name": "Package Wiki"
+		},
+		{
 			"path": "..",
 			"name": "Package Template"
 		}
