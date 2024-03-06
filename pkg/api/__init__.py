@@ -54,25 +54,26 @@ Available Calls:
     - join_logs "Assumes path as a sub-directory of the logs directory"
     - join_plugins "Assumes path as a sub-directory of the plug-ins directory"
     - seperator "Operating System path seperator"
-- plugins == WIP == "Broken until user directory search is fixed"
 - plugins "Controls the loading of all the plug-ins listed by the boot.loader"
     - path "Current expected directory to find launcher plug-ins"
+    - path_exists() "Checks if the given path exists"
     - boot_loader "Current expected directory to find launcher "boot.loader""
+    - boot_loader_exists() "Checks if the given path exists"
     - entry_file "Name of expected file to initiate the plug-in"
+    - settings_extension "Name of the file type expected for plug-in settings"
     - boot_order "Reads the plug-in directory and "boot.loader" to confirm load order"
 """
+
+#region mangle api namespace to bury exposed nodes not intended for use
+from .path import Path as path# Handles anything involving paths
+from .logger import Logger as logger# Application event logger
 
 # CAUTION WHEN USING PLUG-INS
 # these are designed to be capable of using this package to create an application
 # this being said, anything can be executed from the plug-ins once imported
 # only add trusted plug-ins to the boot.loader file
+from .plugins import Plugins as plugins
 
-#fix soon as user directory search is corrected
-#####  WIP  ######## from .plugins import Plugins as plugins
-
-#region mangle api namespace to bury exposed nodes not intended for use
-from .path import Path as path# Handles anything involving paths
-from .logger import Logger as logger# Application event logger
 from . import (
     calendar,# Handles all dates, times, and events
     application,# Provides immutable information about the system as used by the package

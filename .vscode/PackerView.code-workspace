@@ -20,6 +20,7 @@
 			"LICENSE":true,
 			"README.*":true,
 			"SECURITY.*":true,
+			"wiki":true,
 		},
 
 
